@@ -2,7 +2,7 @@
 
 @author: Franco Peschiera
 
-"""
+""" 
 
 import re
 from . import constants as const
@@ -174,7 +174,11 @@ def readMPSSetBounds(line, variable_dict):
         return
     elif bound == "BV":
         set_both_bounds(0, 1)
+        variable_dict[var_name]["cat"] = COL_EQUIV[True]
         return
+    elif bound == "PL":
+        return
+    
     value = float(line[3])
     if bound in ["LO", "UP"]:
         set_one_bound(bound, value)
